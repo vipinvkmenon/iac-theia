@@ -89,8 +89,8 @@ ARG GITHUB_TOKEN
 RUN yarn --cache-folder ./ycache && rm -rf ./ycache
 RUN yarn theia build 
 RUN cd /home/project && \
-    git config --global http.sslVerify false && 
-    git config --global credential.helper cache
+    git config --global http.sslVerify false && \
+    git config --global credential.helper cache;
 EXPOSE 3000
 ENV SHELL /bin/bash
 ENTRYPOINT [ "yarn", "theia", "start", "/home/project", "--hostname=0.0.0.0" ]
