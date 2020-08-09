@@ -87,7 +87,7 @@ ARG version=latest
 ADD $version.package.json ./package.json
 ARG GITHUB_TOKEN
 RUN yarn --cache-folder ./ycache && rm -rf ./ycache
-RUN yarn theia build 
+RUN NODE_OPTIONS="--max_old_space_size=4096" yarn theia build 
 RUN cd /home/project && \
     git config --global http.sslVerify false && \
     git config --global credential.helper cache;
